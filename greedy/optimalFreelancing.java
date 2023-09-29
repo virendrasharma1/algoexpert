@@ -6,12 +6,7 @@ public class optimalFreelancing {
 
     public static int optimalFreelancingImpl(Map<String, Integer>[] jobs) {
 
-        Arrays.sort(jobs, new Comparator<Map<String, Integer>>() {
-            @Override
-            public int compare(Map<String, Integer> o1, Map<String, Integer> o2) {
-                return o2.get("payment").compareTo(o1.get("payment"));
-            }
-        });
+        Arrays.sort(jobs, (o1, o2) -> o2.get("payment").compareTo(o1.get("payment")));
         // Write your code here.
         boolean[] weekArray = new boolean[7];
 
