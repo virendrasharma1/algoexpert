@@ -2,7 +2,7 @@ package strings;
 
 public class longestPalindromicSubstring {
 
-    public static String longestPalindromicSubstring(String str) {
+    public static String longestPalindromicSubstringImpl(String str) {
 
         if (str.length() == 1) {
             return str;
@@ -33,7 +33,6 @@ public class longestPalindromicSubstring {
     }
 
     public static void main(String[] args) {
-//        System.out.println(longestPalindromicSubstring("abaxyzzyxf"));
-        System.out.println(longestPalindromicSubstring("a"));
+        System.out.println(longestPalindromicSubstringImpl("abaxyzzyxf"));
     }
 }
