@@ -6,6 +6,22 @@ Space - O(1) as integers are constanr
  */
 public class monotonicArray {
 
+    public static boolean isMonotonicAnother(int[] array) {
+        boolean isNonDecreasing = true;
+        boolean isNonIncreasing = true;
+
+        for (int i = 1 ; i < array.length ; i++) {
+            if (array[i] > array[i-1]) {
+                isNonDecreasing = false;
+            }
+
+            if (array[i] < array[i-1]) {
+                isNonIncreasing = false;
+            }
+        }
+        return isNonDecreasing || isNonIncreasing;
+    }
+
     public static boolean isMonotonic(int[] array) {
         if (array.length == 0 || array.length == 1) return true;
         int firstElement = array[0];
@@ -51,6 +67,6 @@ public class monotonicArray {
     }
 
     public static void main(String[] args) {
-        System.out.println(isMonotonic(new int[]{1, 1, 1, 1, 1, 1}));
+        System.out.println(isMonotonic(new int[]{1, 2, 3, 4, 5, 6}));
     }
 }
