@@ -1,5 +1,9 @@
 package trees;
 
+/*
+Time - O(n) as each node is visited once
+Space - O(h) where h is height as recursive calls happen for the height and call stack contains call stack. Worst case is O(n) if it is skewed
+ */
 public class symmetricalTree {
 
     public static class BinaryTree {
