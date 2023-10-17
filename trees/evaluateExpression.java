@@ -1,8 +1,9 @@
 package trees;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class branchSums {
+public class evaluateExpression {
     public static class BinaryTree {
         int value;
         BinaryTree left;
@@ -15,25 +16,22 @@ public class branchSums {
         }
     }
 
-    public static List<Integer> branchSumsImpl(BinaryTree root) {
-
-        return branchSumsImpl(root, new ArrayList<Integer>(), 0);
-    }
-
-    public static List<Integer> branchSumsImpl(BinaryTree root, ArrayList<Integer> list, int sum) {
-        sum += root.value;
-        if (root.left != null) {
-            branchSumsImpl(root.left, list, sum);
+    public static int evaluateExpressionTree(BinaryTree tree) {
+        // Write your code here.
+        if (tree.value >= 0) {
+            return tree.value;
         }
+        int leftValue = evaluateExpressionTree(tree.left);
+        int rightValue = evaluateExpressionTree(tree.right);
 
-        if (root.right != null) {
-            branchSumsImpl(root.right, list, sum);
+        if (tree.value == -4) {
+            return leftValue * rightValue;
+        } else if (tree.value == -1) {
+            return leftValue + rightValue;
+        } else if (tree.value == -2) {
+            return leftValue - rightValue;
         }
-
-        if (root.right == null && root.left == null) {
-            list.add(sum);
-        }
-        return list;
+        return leftValue / rightValue;
     }
 
     public static void main(String[] args) {
@@ -49,6 +47,6 @@ public class branchSums {
         tree.right = new BinaryTree(3);
         tree.right.left = new BinaryTree(6);
         tree.right.right = new BinaryTree(7);
-        System.out.println(branchSumsImpl(tree));
+        System.out.println(evaluateExpressionTree(tree));
     }
 }
