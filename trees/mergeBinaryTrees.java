@@ -3,6 +3,10 @@ package trees;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Time - O(n) as each node is processed once
+Space - O(h) as call stack recursion
+ */
 public class mergeBinaryTrees {
 
     public static class BinaryTree {
