@@ -9,8 +9,8 @@ public class classPhotos {
 
     public static boolean classPhotosImpl(List<Integer> redShirtHeights, List<Integer> blueShirtHeights) {
         // Write your code here.
-        Collections.sort(redShirtHeights, Collections.reverseOrder());
-        Collections.sort(blueShirtHeights, Collections.reverseOrder());
+        redShirtHeights.sort(Collections.reverseOrder());
+        blueShirtHeights.sort(Collections.reverseOrder());
         List<Integer> first = new ArrayList<>();
         List<Integer> second = new ArrayList<>();
         if (redShirtHeights.get(0) > blueShirtHeights.get(0)) {
@@ -21,7 +21,7 @@ public class classPhotos {
             second = redShirtHeights;
         }
         for (int i = 0 ; i < first.size() ; i++) {
-            if (second.get(i) > first.get(i)) {
+            if (second.get(i) >= first.get(i)) {
                 return false;
             }
         }
