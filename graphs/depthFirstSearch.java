@@ -3,11 +3,11 @@ package graphs;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Space complexity - Since recursion call, space complexity will be O(V) v is vertices
+Time - O(v + E) - The function visits each node exactly once and explores all its children, leading to a total of V nodes and E edges being processed.
+ */
 public class depthFirstSearch {
-    // Do not edit the class below except
-    // for the depthFirstSearch method.
-    // Feel free to add new properties
-    // and methods to the class.
     static class Node {
         String name;
         List<Node> children = new ArrayList<Node>();
@@ -17,11 +17,10 @@ public class depthFirstSearch {
         }
 
         public List<String> depthFirstSearch(List<String> array) {
-            // Write your code here.
             array.add(this.name);
 
-            for (Node child: children) {
-                child.depthFirstSearch(array);
+            for (Node n : children) {
+                n.depthFirstSearch(array);
             }
             return array;
         }
