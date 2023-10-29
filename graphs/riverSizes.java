@@ -1,4 +1,4 @@
-package stacks;
+package graphs;
 
 import java.util.*;
 
