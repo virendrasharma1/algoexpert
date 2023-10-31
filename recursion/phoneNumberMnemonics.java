@@ -4,7 +4,7 @@ import java.util.*;
 
 public class phoneNumberMnemonics {
 
-    public static List<String> phoneNumberMnemonicsImpl(String phoneNumber) {
+    public static ArrayList<String> phoneNumberMnemonicsImpl(String phoneNumber) {
 
         HashMap<Character, List<String>> phoneMap = new HashMap<>();
         phoneMap.put('0', new ArrayList<>(List.of("0")));
@@ -17,21 +17,27 @@ public class phoneNumberMnemonics {
         phoneMap.put('7', new ArrayList<>(List.of("p", "q", "r", "s")));
         phoneMap.put('8', new ArrayList<>(List.of("t", "u", "v")));
         phoneMap.put('9', new ArrayList<>(List.of("w", "x", "y", "z")));
-
-        List<String> res = new ArrayList<>();
-        res.add("");
-
-        for (int i = 0; i < phoneNumber.length(); i++) {
-            List<String> newList = new ArrayList<>();
-            Character c = phoneNumber.charAt(i);
-            for (String string : phoneMap.get(c)) {
-                for (String re : res) {
-                    newList.add(re + string);
-                }
-            }
-            res = newList;
-        }
+        ArrayList<String> res = new ArrayList<>();
+        phoneNumberMnemonicsImpl(phoneNumber, res, new StringBuilder(), phoneMap, 0);
         return res;
+
+    }
+
+    public static void phoneNumberMnemonicsImpl(String phoneNumber, List<String> result, StringBuilder resString, HashMap<Character, List<String>> map, int activeIndex) {
+
+        if (resString.length() == phoneNumber.length()) {
+            result.add(resString.toString());
+            return;
+        }
+
+        char c = phoneNumber.charAt(activeIndex);
+        List<String> phoneMnemonics = map.get(c);
+
+        for (String mnemonic : phoneMnemonics) {
+            resString.append(mnemonic);
+            phoneNumberMnemonicsImpl(phoneNumber, result, resString, map, activeIndex + 1);
+            resString.deleteCharAt(resString.length() - 1);
+        }
     }
 
     public static void main(String[] args) {
