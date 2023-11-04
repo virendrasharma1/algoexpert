@@ -33,7 +33,7 @@ public class cycleInGraph {
     public static void main(String[] args) {
         int[][] edges = new int[][]{
                 {1, 3},
-                {2, 3, 4},
+                {0, 2, 3, 4},
                 {0},
                 {},
                 {2, 5},
