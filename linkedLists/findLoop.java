@@ -16,14 +16,14 @@ public class findLoop {
         LinkedList slow = head.next;
         LinkedList fast = head.next.next;
 
-        while (fast != slow) {
-            fast = fast.next.next;
+        while(slow != null && fast != null && fast.next != null && slow != fast) {
             slow = slow.next;
+            fast = fast.next.next;
         }
 
-        while (head != slow) {
-            head = head.next;
-            slow = slow.next;
+        while(head != slow) {
+            head=head.next;
+            slow=slow.next;
         }
         return head;
     }
@@ -67,9 +67,9 @@ public class findLoop {
         linkedListOne.next.next.next.next.next.next.next = new LinkedList(7);
         linkedListOne.next.next.next.next.next.next.next.next = new LinkedList(8);
         linkedListOne.next.next.next.next.next.next.next.next.next = new LinkedList(9);
-        linkedListOne.next.next.next.next.next.next.next.next.next.next = linkedListFour;
+//        linkedListOne.next.next.next.next.next.next.next.next.next.next = linkedListFour;
 
 
-        printLinkedList(removeNode(linkedListOne));
+        printLinkedList(findLoopImpl(linkedListOne));
     }
 }
